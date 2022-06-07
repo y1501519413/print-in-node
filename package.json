@@ -1,30 +1,77 @@
 {
-  "name": "vue-waterfall-jy",
-  "version": "1.0.13",
-  "description": "vue项目使用的瀑布流布局",
-  "main": "./src/index.js",
+  "name": "print-in-node",
+  "version": "1.0.0",
+  "description": "在node环境下打印文件",
+  "engines": {
+    "node": ">=14.13.0"
+  },
+  "type": "module",
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.js",
+  "exports": {
+    "node": {
+      "require": "./lib/index.cjs",
+      "import": "./lib/index.js"
+    },
+    "default": "./lib/index.js"
+  },
+  "types": "./lib/index.d.ts",
   "author": "yang <m15009010297@163.com>",
   "scripts": {
     "clean": "rimraf ./lib/*",
-    "build": "npm run clean & rollup -c './scripts/rollup.config.js'",
-    "build:iife": "rollup ./src/index.js --format iife --name 'myBundle1' --file bundle.iife.js",
-    "build:cjs": "rollup ./src/index.js --format cjs --file bundle.cjs.js",
-    "build:umd": "rollup ./src/index.js --format umd --name 'myBundle2' --file bundle.umd.js",
-    "rollup:help": "rollup --help"
+    "eslint": "eslint --fix",
+    "log": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1",
+    "build": "npm run clean && rollup -c './rollup.config.js'",
+    "tsc": "npm run clean && tsc",
+    "release": "run-s build && npm publish",
+    "cz": "git add . && cz"
   },
-  "license": "ISC",
-  "keywords": [
-    "yjy",
-    "test"
+  "files": [
+    "lib"
   ],
-  "dependencies": {
-    "@babel/core": "^7.14.6",
-    "dayjs": "^1.10.5",
+  "license": "MIT",
+  "keywords": [
+    "print",
+    "node"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/y1501519413/print-in-node"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "@typescript-eslint/eslint-plugin": "^5.17.0",
+    "@typescript-eslint/parser": "^5.17.0",
+    "conventional-changelog-cli": "^2.2.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "dayjs": "^1.10.7",
+    "eslint": "^8.12.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.52.2",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-json": "^4.0.0",
-    "rollup-plugin-node-resolve": "^5.2.0"
+    "rollup-plugin-filesize": "^9.1.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.31.2",
+    "tslib": "^2.3.1",
+    "typescript": "^4.6.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "npm run eslint"
+    ]
   }
 }
