@@ -1,7 +1,7 @@
 {
   "name": "print-in-node",
-  "version": "1.0.0",
-  "description": "在node环境下打印文件",
+  "version": "1.0.3",
+  "description": "Print files in the Node environment",
   "engines": {
     "node": ">=14.13.0"
   },
