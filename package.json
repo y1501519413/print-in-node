@@ -1,6 +1,6 @@
 {
   "name": "print-in-node",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Print files in the Node environment",
   "engines": {
     "node": ">=14.13.0"
@@ -36,7 +36,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/y1501519413/print-in-node"
+    "url": "https://github.com/y1501519413/print-in-node"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
