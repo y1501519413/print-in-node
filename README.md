@@ -10,12 +10,15 @@ npm install print-in-node
 
 ```javascript
 import print from 'print-in-node'
-print(dir[, printer[, options]])
+print(dir[, options[, printer]])
 ```
 
-- dir 需要打印的目录
-- printer 打印机，不传为默认打印机
-- options 选项
+- dir 需要打印的目录 string
+- options 选项 string[]
+  - landscape 横向打印
+  - sides=two-sided-short-edge 双面模式打印
+  - sides=one-sided 单面模式打印
+- printer 打印机，不传为默认打印机 string
 
 ## Reference
 

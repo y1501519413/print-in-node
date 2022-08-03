@@ -6,16 +6,18 @@ const execAsync = util.promisify(exec)
 /**
  * 打印当前指定目录下所有文件
  */
-const print: Print = async ({ path, printer, options }) => {
+const print: Print = async (path, options, printer) => {
   const files = fs.readdirSync(path)
   const args = files.map((file: string) => join(path, file))
 
-  if (printer) {
-    args.push('-d', printer)
+  if (options) {
+    args.push('-o')
+    args.push(options.join(' '))
   }
 
-  if (options) {
-    options.forEach(arg => args.push(arg))
+  if (printer) {
+    args.push('-d')
+    args.push(printer)
   }
 
   return execAsync(`lp ${args.join(' ')}`)

@@ -1,11 +1,6 @@
-interface PrintParams {
-  path: string
-  printer?: string
-  options?: Array<string>
-}
-
 interface Print {
-  (params: PrintParams): Promise<unknown>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (path: string, options?: Array<string>, printer?: string): Promise<any>
 }
 
 declare module 'fs'
