@@ -11,8 +11,10 @@ const print: Print = async (path, options, printer) => {
   const args = files.map((file: string) => join(path, file))
 
   if (options) {
-    args.push('-o')
-    args.push(options.join(' '))
+    const str = options.reduce((prev, elem) => {
+      return `${prev} -o ${elem}`
+    }, '')
+    args.push(str)
   }
 
   if (printer) {
